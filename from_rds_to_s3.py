@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import json
 import mysql.connector
 
 load_dotenv()
@@ -28,7 +29,21 @@ cursor = connection.cursor()
 
 # --- MY QUERIES ---
 # The [show_id] of Saudi arabia movies in Netflix platform
-use_database = f"SELECT show_id FROM {database}.shows WHERE type='Movie' AND country LIKE '%Saudi Arabia%';"
-cursor.execute(use_database)
+id_of_suadi_movies = f"SELECT show_id FROM {database}.shows WHERE type='Movie' AND country LIKE '%Saudi Arabia%' ORDER BY release_year;"
+
+cursor.execute(id_of_suadi_movies)
 record = cursor.fetchall()
-print(record)
+
+# DICTIONARY FRO QUIERY RESULT
+dict_id_of_suadi_movies = {'show_id': []}
+num = 0
+for r in record:
+    num = num + 1
+    dict_id_of_suadi_movies['show_id'].append({num: str(r)[1:-2]})
+
+# CONVERT QUEIRY RESULT TO JSON FORMAT
+show_id_as_json = json.dumps(dict_id_of_suadi_movies, indent=2)
+# CREATE JSON FILE
+jsonFolder = "jsonFiles/"
+with open(f'{jsonFolder}saudi_movies_id_in_netflix.json', 'w') as jsonFile:
+    jsonFile.write(show_id_as_json)
