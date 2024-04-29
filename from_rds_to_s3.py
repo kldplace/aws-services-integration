@@ -40,11 +40,12 @@ dict_id_of_suadi_movies = {'show_id': []}
 num = 0
 for r in record:
     num = num + 1
-    dict_id_of_suadi_movies['show_id'].append({num: str(r)[1:-2]})
+    dict_id_of_suadi_movies['show_id'].append({num: str(r)[2:-3]})
 
 # --- CREATE JSON FILE ---
 # CONVERT QUEIRY RESULT TO JSON FORMAT
 show_id_as_json = json.dumps(dict_id_of_suadi_movies, indent=2)
+
 # CREATE JSON FILE
 jsonFolder = "jsonFiles/"
 with open(f'{jsonFolder}saudi_movies_id_in_netflix.json', 'w') as jsonFile:
@@ -52,7 +53,7 @@ with open(f'{jsonFolder}saudi_movies_id_in_netflix.json', 'w') as jsonFile:
     
 # --- CREATE AND UPLOAD TO AWS S3 BUCKET ---
 s3 = boto3.resource('s3')
-
+# --- BUCKET VARIABLES
 file_name = 'saudi_movies_id_in_netflix.json'
 bucket_name = os.getenv('S3_BUCKET')
 LocationConstraint = os.getenv('REGION')
@@ -68,7 +69,7 @@ def create_s3_bucket(bucket_name, region):
         print('s3 Bucket created successfully')
     except Exception as error:
         print(error)
-create_s3_bucket(bucket_name,LocationConstraint)
+# create_s3_bucket(bucket_name,LocationConstraint)
 
 # UPLOAD BUCKET
 def upload_to_s3_bucket(jsonFile, bucket_name, key):
