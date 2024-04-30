@@ -29,7 +29,7 @@ except Exception:
 cursor = connection.cursor()
 
 # --- MY QUERIES ---
-# The [show_id] of Saudi arabia movies in Netflix platform
+# The [show_id] SQL query of Saudi arabia movies in Netflix platform
 id_of_suadi_movies = f"SELECT show_id FROM {database}.shows WHERE type='Movie' AND country LIKE '%Saudi Arabia%' ORDER BY release_year;"
 cursor.execute(id_of_suadi_movies)
 records = cursor.fetchall()
