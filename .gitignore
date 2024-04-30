@@ -2,3 +2,4 @@ lib/
 aws/
 venv/
 .env
+sql.connector.zip
