@@ -28,7 +28,6 @@ In this script, I utilize the `sql.connector` package to execute a query aimed a
 Finally, In the lambda function, I focus on configuring it for three main tasks:
 * **Granting Permissions:** I enable access to the S3 Bucket by configuring appropriate permissions..
 * **Establishing Database Connection:** I create a connection from the lambda function to the RDS database.
-* Adding layer to my lambda function to handle the packages, which i explained in this repo how i did it, you can go to `lambda-function/lambda-layers/creating_layers.md` or click on this link here <a href="https://github.com/kldplace/aws-services-integration/blob/main/lambda-function/lambda-layers/creating_layers.md"> **creating lambda layers** </a>
 * **Adding Lambda Layers:** I enhance the functionality by incorporating lambda layers to manage packages efficiently. Details of this process and how i did it explained in the repository under `lambda-function/lambda-layers/creating_layers.md`, which you can access <a href="https://github.com/kldplace/aws-services-integration/blob/main/lambda-function/lambda-layers/creating_layers.md"> **here** </a>.
 
 Following the configuration, I implement a script in the lambda handler to accomplish the following tasks:
