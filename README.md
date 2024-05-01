@@ -7,10 +7,10 @@
 
 ##### In this project i create:
 
-* RDS (mysql server)
-* S3 Bucket
-* EC2 Instance
-* Lambda Function
+* **RDS (mysql server).**
+* **S3 Bucket.**
+* **EC2 Instance.**
+* **Lambda Function.**
 
 <hr>
 <p> The structue of this project start from the <a href="https://www.kaggle.com/datasets/shivamb/netflix-shows"> dataset </a>i used from kaggle, I upload it to (mysql server) which i connected to AWS RDS service.</p>
@@ -31,9 +31,13 @@ Finally, In the lambda function, I focus on configuring it for three main tasks:
 * Adding layer to my lambda function to handle the packages, which i explained in this repo how i did it, you can go to `lambda-function/lambda-layers/creating_layers.md` or click on this link here <a href="https://github.com/kldplace/aws-services-integration/blob/main/lambda-function/lambda-layers/creating_layers.md"> **creating lambda layers** </a>
 * **Adding Lambda Layers:** I enhance the functionality by incorporating lambda layers to manage packages efficiently. Details of this process and how i did it explained in the repository under `lambda-function/lambda-layers/creating_layers.md`, which you can access <a href="https://github.com/kldplace/aws-services-integration/blob/main/lambda-function/lambda-layers/creating_layers.md"> **here** </a>.
 
-after that i write a script in the lambda handler, to connect with:
-*  RDS database to querying the saudi movies `title`, `director` and `release_year` in the netflix platform.
-* And connect with s3 Bucket to getting the result from json file i created in the previous step when i worked in EC2. 
+Following the configuration, I implement a script in the lambda handler to accomplish the following tasks:
+*  **Querying RDS Database:** Retrieve information about Saudi movies `title`, `director`, and `release year`in the Netflix platform.
+* **Accessing S3 Bucket:** Fetch the result from a JSON file previously generated during the EC2 phase. 
+
+#### Json Files Results:
+* **Craeted From EC2**: click here -> <a href="https://github.com/kldplace/aws-services-integration/blob/main/jsonFiles/saudi_movies_id_in_netflix.json"> `jsonFiles/`</a>
+* **Created From Lambda Function**: click here -> <a href="https://github.com/kldplace/aws-services-integration/tree/main/jsonFiles/lambda-tmp/saudi_movies_info_in_netflix.json"> `jsonFiles/lambda-tmp`</a>
 
 
 
