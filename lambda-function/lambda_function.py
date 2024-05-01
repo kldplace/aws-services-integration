@@ -1,16 +1,14 @@
-from dotenv import load_dotenv
 import os
 import json
 import boto3
 import mysql.connector
 
-load_dotenv()
 def lambda_handler(event, context):
     # --- DATABASE CREDENTIALS ---
-    host= os.getenv('DB_HOST')
-    database= os.getenv('DB_DATABASE')
-    user= os.getenv('DB_USER')
-    password= os.getenv('DB_PASSWORD')
+    host= os.environ['DB_HOST']
+    database= os.environ['DB_DATABASE']
+    user= os.environ['DB_USER']
+    password= os.environ['DB_PASSWORD']
 
     # --- DATABASE CONNECTION ---
     try:
@@ -97,7 +95,7 @@ def lambda_handler(event, context):
     file_name_of_shows_info = 'saudi_movies_info_in_netflix.json'
     lambda_tmp_folder = "/tmp/"
     # --- BUCKET VARIABLES
-    bucket_name = os.getenv('S3_BUCKET')
+    bucket_name = os.environ['S3_BUCKET']
     # [s3_folder] the folder i created in s3 Bucket
     s3_folder = 'json'
     key = f'{s3_folder}/{file_name_of_shows_info}'
