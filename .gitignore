@@ -1,6 +1,5 @@
 lib/
 aws/
 venv/
-img/
 .env
 mysql.connector.zip
